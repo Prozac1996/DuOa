@@ -10,11 +10,34 @@
 <head>
     <title>肚Oa-业务</title>
     <script src="../js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="../jqgrid/css/ui.jqgrid.css">
+    <link rel="stylesheet" href="../jqgrid/css/css/redmond/jquery-ui-1.8.16.custom.css" />
+    <script type="text/javascript" src="../jqgrid/js/jquery.jqGrid.src.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <script>
+        $(document).ready(function () {
+            jQuery("#reports").jqGrid({
+                url:"data/report",
+                dataType:"json",
+                colNames:['ID','Title','Content','State'],
+                colModel:[
+                    {name:'id',index:'id',width:55},
+                    {name:'title',index:'title',width:90},
+                    {name:'content',index:'content',width:50},
+                    {name:'state',index:'state',width:55}
+                ],
+                rowNum:10,
+                pager:'pager',
+                sortname:'id',
+                sortorder:'desc',
+                mtype:"post",
+                viewrecords:true,
+                caption:"Reports"
+            });
+            jQuery("#reports").jqGrid('navGrid','#pager',{edit:false,add:false,del:false});
+        });
+    </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 </head>
 
 <%
@@ -34,9 +57,10 @@
     <br/>
     <button style="width: 260px">提交提报</button>
 </div>
-<div >
-    我的提报：
-
+<div style="float: left;">
+    我的提报：<br/>
+    <table id="reports"></table>
+    <div id="pager"></div>
 </div>
 </body>
 </html>

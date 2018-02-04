@@ -5,6 +5,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.mchange.v2.resourcepool.ResourcePool;
+import controller.DataController;
 import controller.IndexController;
 import controller.ManageController;
 import controller.UserController;
@@ -22,8 +23,9 @@ public class ServerConfig extends JFinalConfig {
     @Override
     public void configRoute(Routes me) {
         me.add("/", IndexController.class);
-        me.add("/user", UserController.class);
-        me.add("/manage", ManageController.class);
+        me.add("user", UserController.class);
+        me.add("manage", ManageController.class);
+        me.add("data", DataController.class);
     }
 
     @Override
