@@ -9,14 +9,21 @@
 <html>
 <head>
     <title>肚Oa-业务</title>
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 </head>
+
+<%
+    String username = (String) session.getAttribute("username");
+%>
+
 <body>
+<div id="top">肚Oa： 欢迎——<%=username%> !</div>
+<div id="bottom"></div>
 <div style="float: left;margin-right: 20px">
 新增提报：
     <input name="title" type="text" placeholder="题目">

@@ -10,42 +10,55 @@
   <head>
     <title>肚Oa</title>
     <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="jquery.form.min.js"></script>
+
     <script>
+
+      $(document).ready(function () {
+          $("#login").click(function () {
+              if(!login_check())
+                  return;
+              $("#login_form").ajaxSubmit({
+                  dataType:"json",
+                  success:function(data){
+                      if(data.flag){
+                          alert(data.msg);
+                          window.location.href = "manage/bussiness";
+                      }else{
+                          alert(data.msg);
+                      }
+                  }
+              })
+          });
+      })
+
       function register() {
           window.location.href = "register"
       }
 
-      function login() {
+      function login_check() {
           var username = $("input[name='username']").val();
           var password = $("input[name='password']").val();
 
           if(username == '' || password == ''){
               alert("请完善信息后login!");
-              return;
+              return false;
           }
-
-          $.ajax({
-              url:"http://localhost:8888/user/login",
-              type:"post",
-              data:{
-                  username:username,
-                  password:password
-              },
-              success:function(result){
-                  alert(result);
-              }
-
-          })
+          return true;
       }
     </script>
 
   </head>
   <body>
-  肚Oa
+  肚Oa-登录
   <br/>
-  <input name="username" type="text" placeholder="username"><br/>
-  <input name="password" type="password" placeholder="password"><br/>
-  <input type="button" value="登录" onclick="login();">
-  <input type="button" value="注册" onclick="register();">
+  <form id="login_form" action="user/login" method="post">
+    <label for="username">账号</label>
+    <input id="username" name="username" type="text" placeholder="username"><br/>
+    <label for="password">密码</label>
+    <input id="password" name="password" type="password" placeholder="password"><br/>
+    <input type="button" value="登录" id="login" >
+    <input type="button" value="注册" onclick="register();">
+  </form>
   </body>
 </html>

@@ -1,5 +1,6 @@
 package controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
@@ -10,40 +11,63 @@ import java.util.List;
 public class UserController extends Controller{
 
     public void register(){
+
+        boolean flag = false;
+        String msg = "";
+
+        JSONObject json = new JSONObject();
+
         String username = getPara("username");
         String password = getPara("password");
 
-        List<Record> records = Db.find("select * from user where username='"+username+"'");
-        if(records.size() != 0){
-            renderText("user Already register;");
-            return;
+        User user = User.dao.findFirst("select * from user where username=?",username);
+
+        if(user != null){
+            msg = "此用户已经存在！";
+            flag = false;
+        }else{
+            user = new User();
+            user.set("username",username);
+            user.set("password",password);
+            user.set("power",0);
+            user.save();
+            msg = "用户注册成功！";
+            flag = true;
         }
-
-        Record record = new Record();
-        record.set("username",username);
-        record.set("password",password);
-        record.set("power",0);
-        Db.save("user",record);
-
-        renderText("注册成功!");
+        json.put("msg",msg);
+        json.put("flag",flag);
+        renderJson(json);
     }
 
+
     public void login(){
+
+        boolean flag = false;
+        String msg = "";
+
+        JSONObject json = new JSONObject();
+
         String username = getPara("username");
         String password = getPara("password");
 
-        List<User> users = User.dao.find("select * from user where username='"+username+"'");
-        if(users.size() == 0){
-            renderText("登录失败，用户名或密码错误！");
-            return;
+        User user = User.dao.findFirst("select * from user where username=?",username);
+
+        if(user != null){
+            if(user.getStr("password").equals(password)){
+                msg = "登录成功！";
+                flag = true;
+                getSession().setAttribute("username",username);
+            }else{
+                flag = false;
+                msg = "用户名或密码错误！";
+            }
+        }else{
+            flag = false;
+            msg = "用户名或密码错误！";
         }
-        User user = users.get(0);
-        String user_password = user.get("password");
-        if(user_password.equals(password)){
-            renderText("登录成功!");
-        }else {
-            renderText("登录失败，用户名或密码错误！");
-        }
+        json.put("msg",msg);
+        json.put("flag",flag);
+        renderJson(json);
 
     }
 }
