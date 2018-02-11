@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>肚Oa-注册</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/jquery.form.min.js"></script>
 
@@ -67,7 +67,7 @@
 </head>
 <body>
 <div id="particles-js">
-    <div class="container" id="container" style="position:absolute;">
+    <div class="container col-md-6 col-xs-12" id="container" style="position:absolute;">
         <div id="div_register" class="text-center">
             <font size="10" color="white">肚Oa-注册</font>
             <form id="register_form" action="user/register" method="post">
@@ -84,11 +84,11 @@
                     <input type="password" class="form-control" placeholder="Password_again" name="password_again" aria-describedby="password_again_addon" autocomplete="off">
                 </div>
                 <br/>
-                <div class="btn btn-success col-md-12" id="register">注册</div>
+                <div class="btn btn-success col-md-12 col-xs-12" id="register">注册</div>
                 <br/>
                 <br/>
                 <br/>
-                <div class="btn btn-default col-md-12" onclick="back();">返回</div>
+                <div class="btn btn-default col-md-12 col-xs-12" onclick="back();">返回</div>
             </form>
         </div>
     </div>

@@ -1,8 +1,34 @@
+/* 超小屏幕（手机，小于 768px） */
 #container{
-    width:30%;
     height: 20%;
-    margin-top: 10%;
+    margin-top: 40%;
     left:0; right:0; top:0; bottom:0;
     margin-left:auto;
     margin-right:auto;
+}
+
+@media (min-width:768px) {
+    #container{
+        margin-top: 40%;
+    }
+}
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    #container{
+        margin-top: 20%;
+    }
+    #top{
+        margin-top: 20px;
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+    #container{
+        margin-top: 10%;
+    }
+    #top{
+        margin-top: 20px;
+    }
 }

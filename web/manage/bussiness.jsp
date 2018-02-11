@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>肚Oa-业务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/jquery.form.min.js"></script>
 
@@ -17,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script src="../js/script.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
 
     <link href="../css/bootstrap.css" rel="stylesheet">
     <script src="../js/bootstrap.js"></script>
@@ -116,8 +118,8 @@
 
 <div class="container">
     <div class="row">
-        <h1 class="col-md-9">肚Oa</h1>
-        <div id="top" class="col-md-3 text-center" style="margin-top: 20px">
+        <h1 class="col-md-9 col-xs-12">肚Oa</h1>
+        <div id="top" class="col-md-3 col-xs-10 text-right" style="">
             欢迎——<%=user.get("username")%> !
             <div class="btn btn-danger" onclick="logout()">退出登录</div>
         </div>
@@ -131,7 +133,7 @@
                 <br/>
                 <textarea rows="20" id="content" name="content" class="form-control col-md-12" placeholder="提报内容"></textarea>
                 <br/>
-                <div id="submit" class="btn btn-primary col-md-12">新增提报</div>
+                <div id="submit" class="btn btn-primary col-md-12 col-xs-12">新增提报</div>
             </form>
         </div>
 

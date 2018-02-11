@@ -96,7 +96,7 @@
     <div class="container">
         <div class="row">
             <h1 class="col-md-4">肚Oa</h1>
-            <div id="top" class="col-md-offset-5 col-md-3 text-center" style="margin-top: 20px">
+            <div id="top" class="col-md-offset-5 col-md-3 text-right" style="margin-top: 20px">
                 欢迎——<%=user.get("username")%> !
                 <div class="btn btn-danger" onclick="logout()">退出登录</div>
             </div>

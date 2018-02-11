@@ -9,6 +9,7 @@
 <html>
   <head>
     <title>肚Oa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/jquery.form.min.js"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css" >
@@ -69,7 +70,7 @@
   </head>
   <body>
   <div id="particles-js">
-    <div id="container" class="container" style="position: absolute;">
+    <div id="container" class="container col-md-6 col-xs-12" style="position: absolute;">
       <div id="div_login" class="text-center">
         <font size="10" color="white">肚Oa-登录</font>
         <form id="login_form" action="user/login" method="post">
@@ -86,11 +87,11 @@
           <%--<input id="username" name="username" type="text" placeholder="username"><br/>--%>
           <%--<label for="password">密码</label>--%>
           <%--<input id="password" name="password" type="password" placeholder="password"><br/>--%>
-          <div class="btn btn-primary col-md-12" id="login">登录</div>
+          <div class="btn btn-primary col-md-12 col-xs-12" id="login">登录</div>
           <br/>
           <br/>
           <br/>
-          <div class="btn btn-success col-md-12" onclick="register();">注册</div>
+          <div class="btn btn-success col-md-12 col-xs-12" onclick="register();">注册</div>
         </form>
       </div>
     </div>
