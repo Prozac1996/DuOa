@@ -67,9 +67,9 @@
   </head>
   <body>
   <div id="particles-js">
-    <div class="container" style="position: absolute;">
+    <div id="container" class="container" style="position: absolute;">
       <div id="div_login" class="text-center">
-        <font size="10">肚Oa-登录</font>
+        <font size="10" color="white">肚Oa-登录</font>
         <form id="login_form" action="user/login" method="post">
           <div class="input-group">
             <span class="input-group-addon" id="username_addon">账号</span>
@@ -85,6 +85,7 @@
           <%--<label for="password">密码</label>--%>
           <%--<input id="password" name="password" type="password" placeholder="password"><br/>--%>
           <div class="btn btn-primary col-md-12" id="login">登录</div>
+          <br/>
           <br/>
           <br/>
           <div class="btn btn-success col-md-12" onclick="register();">注册</div>
