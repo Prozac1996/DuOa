@@ -16,6 +16,14 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script src="../js/script.js"></script>
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/bootstrap.js"></script>
+
+
+    <%--<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css">--%>
+    <%--<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>--%>
+
     <script>
 
         $(document).ready(function () {
@@ -84,21 +92,27 @@
 //    String userPower = (String) session.getAttribute("userPower");
 %>
 <body>
-    <div id="top">肚Oa： 欢迎——<%=user.get("username")%> !
-        <a href="javascript:void(0);" onclick="logout()">退出登录</a>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-md-4">肚Oa</h1>
+            <div id="top" class="col-md-offset-5 col-md-3 text-center" style="margin-top: 20px">
+                欢迎——<%=user.get("username")%> !
+                <div class="btn btn-danger" onclick="logout()">退出登录</div>
+            </div>
+        </div>
+        <table id="table_id_example" class="hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>提报人</th>
+                <th>题目</th>
+                <th>内容</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
-    <table id="table_id_example" class="hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>提报人</th>
-            <th>题目</th>
-            <th>内容</th>
-            <th>状态</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
 </body>
 </html>

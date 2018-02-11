@@ -18,6 +18,8 @@
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script src="../js/script.js"></script>
 
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/bootstrap.js"></script>
     <script>
 
         $(document).ready(function () {
@@ -111,36 +113,45 @@
 
 <body>
 
+<div class="container">
+    <div class="row">
+        <h1 class="col-md-9">肚Oa</h1>
+        <div id="top" class="col-md-3 text-center" style="margin-top: 20px">
+            欢迎——<%=user.get("username")%> !
+            <div class="btn btn-danger" onclick="logout()">退出登录</div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-md-4">
+            <form id="report_add" action="../data/reportAdd" method="post">
+                <input type="text" class="form-control" placeholder="提报题目" name="title">
+                <br/>
+                <textarea rows="20" id="content" name="content" class="form-control col-md-12" placeholder="提报内容"></textarea>
+                <br/>
+                <div id="submit" class="btn btn-primary col-md-12">新增提报</div>
+            </form>
+        </div>
 
-<div style="float: left;margin-right: 20px">
-    <div id="top">肚Oa： 欢迎——<%=user.get("username")%> !
-        <a href="javascript:void(0);" onclick="logout()">退出登录</a></div>
-    <form id="report_add" action="../data/reportAdd" method="post">
-        新增提报：
-        <input id="title" name="title" type="text" placeholder="题目">
-        <br/>
-        <br/>
-        <textarea id="content" name="content" style="width: 260px;height: 300px" placeholder="提报内容"></textarea>
-        <br/>
-        <br/>
-        <input style="width: 100%" type="button" value="提交" id="submit">
-    </form>
+        <div class="col-md-8">
+            我的提报：<br/>
+            <table id="table_id_example" class="hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>提报</th>
+                    <th>内容</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
 
-<div style="float: left; width: 70%;">
-    我的提报：<br/>
-    <table id="table_id_example" class="hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>提报</th>
-            <th>内容</th>
-            <th>状态</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
 </body>
 </html>
