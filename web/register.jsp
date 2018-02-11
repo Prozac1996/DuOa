@@ -11,7 +11,7 @@
     <title>肚Oa-注册</title>
 
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="jquery.form.min.js"></script>
+    <script src="js/jquery.form.min.js"></script>
 
     <script>
 
@@ -56,7 +56,7 @@
         }
 
         function back(){
-            window.location.href = "/";
+            window.location.href = ".";
         }
     </script>
 </head>

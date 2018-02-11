@@ -2,6 +2,7 @@ package interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import model.User;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,9 +13,8 @@ public class UserInterceptor implements Interceptor {
         if(session == null){
             inv.getController().redirect("/");
         }else{
-            String username = (String) session.getAttribute("username");
-            if(username != null){
-                System.out.println(username+"已登录！");
+            User user = (User) session.getAttribute("user");
+            if(user != null){
                 inv.invoke();
             }else{
                 inv.getController().redirect("/");

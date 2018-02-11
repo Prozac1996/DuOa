@@ -44,6 +44,7 @@ public class UserController extends Controller{
 
         boolean flag = false;
         String msg = "";
+        String index = "";
 
         JSONObject json = new JSONObject();
 
@@ -56,7 +57,8 @@ public class UserController extends Controller{
             if(user.getStr("password").equals(password)){
                 msg = "登录成功！";
                 flag = true;
-                getSession().setAttribute("username",username);
+                getSession().setAttribute("user",user);
+                json.put("index",user.get("power"));
             }else{
                 flag = false;
                 msg = "用户名或密码错误！";
@@ -67,7 +69,22 @@ public class UserController extends Controller{
         }
         json.put("msg",msg);
         json.put("flag",flag);
+
         renderJson(json);
+
+    }
+
+    public void logout(){
+        JSONObject json = new JSONObject();
+        String msg = "用户注销成功！";
+        boolean flag = true;
+        getSession().removeAttribute("user");
+
+        json.put("msg",msg);
+        json.put("flag",flag);
+
+        renderJson(json);
+
 
     }
 }
