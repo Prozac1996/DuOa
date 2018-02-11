@@ -41,6 +41,7 @@
                             { data: 'content' },
                             { data: 'state' }
                         ],
+                        "order":[0,'desc'],
                         "oLanguage": {//插件的汉化
                             "sLengthMenu": "每页显示 _MENU_ 条记录",
                             "sZeroRecords": "抱歉， 没有找到",

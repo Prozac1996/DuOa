@@ -14,6 +14,8 @@
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/jquery.form.min.js"></script>
 
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/bootstrap.js"></script>
     <script>
         function pass() {
             var id = $("#id").val();
@@ -72,41 +74,43 @@
 
 %>
 <body>
-    <table>
-        <ul>
-            <tr>
-                <td width="100px">提报ID</td>
-                <td width="300px"><input name="id" id="id" disabled="disabled" value="<%=id%>"></td>
-            </tr>
-            <tr>
-                <td>提报人</td>
-                <td><%=user.get("username")%></td>
-            </tr>
-            <tr>
-                <td>状态</td>
-                <td><%=stateCn%></td>
-            </tr>
-            <tr>
-                <td>题目</td>
-                <td><%=report.get("title")%></td>
-            </tr>
-            <tr>
-                <td>内容</td>
-                <td><%=report.get("content")%></td>
-            </tr>
-            <tr>
-                <td>反馈</td>
-                <td><textarea id="feedback" name="feedback"
-                              style="width: 100%;height: 300px"><%=report.get("feedback")%></textarea></td>
-            </tr>
-            <tr>
-                <td>操作</td>
-                <td>
-                    <button onclick="pass();">通过审批</button>
-                    <button onclick="refuse();">拒绝审批</button>
-                </td>
-            </tr>
-        </ul>
-    </table>
+    <div class="container">
+        <table class="table">
+            <ul>
+                <tr>
+                    <td width="100px">提报ID</td>
+                    <td width="300px"><input name="id" id="id" disabled="disabled" value="<%=id%>"></td>
+                </tr>
+                <tr>
+                    <td>提报人</td>
+                    <td><%=user.get("username")%></td>
+                </tr>
+                <tr>
+                    <td>状态</td>
+                    <td><%=stateCn%></td>
+                </tr>
+                <tr>
+                    <td>题目</td>
+                    <td><%=report.get("title")%></td>
+                </tr>
+                <tr>
+                    <td>内容</td>
+                    <td><%=report.get("content")%></td>
+                </tr>
+                <tr>
+                    <td>反馈</td>
+                    <td><textarea id="feedback" name="feedback"
+                                  style="width: 100%;height: 300px"><%=report.get("feedback")%></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="col-md-4 btn btn-success" onclick="pass();">通过</div>
+                        <div class="col-md-offset-1 col-md-4 btn btn-danger" onclick="refuse();">拒绝</div>
+                    </td>
+                </tr>
+            </ul>
+        </table>
+    </div>
 </body>
 </html>
