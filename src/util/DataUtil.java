@@ -2,6 +2,7 @@ package util;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.jfinal.plugin.activerecord.Page;
 import model.Report;
 import model.User;
 

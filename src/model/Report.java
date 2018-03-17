@@ -2,6 +2,8 @@ package model;
 
 import com.jfinal.plugin.activerecord.Model;
 
+import java.util.List;
+
 public class Report extends Model<Report> {
     public static final int STATE_WAIT = 0;
     public static final int STATE_PASS = 1;
@@ -19,5 +21,12 @@ public class Report extends Model<Report> {
                 return "审批拒绝";
         }
         return "未处理";
+    }
+
+    public boolean match(String pattern){
+        return get("id").toString().contains(pattern) ||
+                get("title").toString().contains(pattern) ||
+                get("content").toString().contains(pattern) ||
+                get("username").toString().contains(pattern);
     }
 }

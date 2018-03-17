@@ -28,48 +28,44 @@
 
         $(document).ready(function () {
 
-            $.ajax({
-                url:"../data/reportAll",
-                success:function(result){
-                    console.info(result);
-                    var table = $('#table_id_example').DataTable({
-                        data:result,
-                        columns: [
-                            { data: 'id' },
-                            { data: 'username' },
-                            { data: 'title' },
-                            { data: 'content' },
-                            { data: 'state' }
-                        ],
-                        "order":[0,'desc'],
-                        "oLanguage": {//插件的汉化
-                            "sLengthMenu": "每页显示 _MENU_ 条记录",
-                            "sZeroRecords": "抱歉， 没有找到",
-                            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
-                            "sInfoEmpty": "没有数据",
-                            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
-                            "oPaginate": {
-                                "sFirst": "首页",
-                                "sPrevious": "前一页",
-                                "sNext": "后一页",
-                                "sLast": "尾页"
-                            },
-                            "sZeroRecords": "没有检索到数据",
-                            "sProcessing": "<img src='' />",
-                            "sSearch": "搜索"
-                        }
-                    });
-                    $('#table_id_example').on('click','tr',function () {
-                        var data = table.row(this).data();
-                        window.location.href = "../manage/detailApprove?id="+data.id;
+            var table = $('#table_report').DataTable({
+                columns: [
+                    { "data": 'id' },
+                    { "data": 'username' },
+                    { "data": 'title' },
+                    { "data": 'content' },
+                    { "data": 'state' }
+                ],
+//                "order":[0,'desc'],
+                "oLanguage": {//插件的汉化
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "抱歉， 没有找到",
+                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                    "sInfoEmpty": "没有数据",
+                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "前一页",
+                        "sNext": "后一页",
+                        "sLast": "尾页"
+                    },
+                    "sZeroRecords": "没有检索到数据",
+                    "sProcessing": "正在加载中",
+                    "sSearch": "搜索"
+                },
+                "lengthChange":false,
+                "processing":true,
+                "serverSide":true,
+                "searchable":false,
+                "ajax":"../data/reportPageData"
 
-                    })
-                }
             });
 
+            $('#table_report').on('click','tr',function () {
+                var data = table.row(this).data();
+                window.location.href = "../manage/detailApprove?id="+data.id;
 
-
-
+            })
         });
 
         function logout() {
@@ -101,7 +97,7 @@
                 <div class="btn btn-danger" onclick="logout()">退出登录</div>
             </div>
         </div>
-        <table id="table_id_example" class="hover">
+        <table id="table_report" class="hover">
             <thead>
             <tr>
                 <th>ID</th>

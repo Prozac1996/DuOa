@@ -12,4 +12,8 @@ public class IndexController extends Controller {
         renderJsp("register.jsp");
     }
 
+    public void test(){
+        renderJsp("test.jsp");
+    }
+
 }

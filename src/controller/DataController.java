@@ -3,6 +3,8 @@ package controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Page;
+import com.sun.org.apache.regexp.internal.RE;
 import model.Report;
 import model.User;
 import util.DataUtil;
@@ -56,6 +58,29 @@ public class DataController extends Controller {
         json = DataUtil.reportsToJsonArray(reports);
 
         renderJson(json);
+    }
+
+    public void reportPageData(){
+        //获取DT传送的数据
+        int draw = getParaToInt("draw");
+        int start = getParaToInt("start");
+        int length = getParaToInt("length");
+        int pageNumber = start/length + 1;
+        String[] searchString = getParaValues("search");
+        System.out.println(searchString);
+        //返回给DT数据
+        List<Report> list = Report.dao.find("select * from report");
+        int sum = list.size();
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("draw",draw);
+        jsonObject.put("recordsTotal",sum);
+        jsonObject.put("recordsFiltered",sum);
+        JSONArray json;
+        Page<Report> reports = Report.dao.paginate(pageNumber,length,"select *","from report ORDER BY id desc");
+        json = DataUtil.reportsToJsonArray(reports.getList());
+        jsonObject.put("data",json);
+        renderJson(jsonObject);
     }
 
     public void updateReport(){
