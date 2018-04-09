@@ -69,6 +69,10 @@
                 </td>
             </tr>
             <tr>
+                <td>提交时间</td>
+                <td><%=report.get("dateTime")%></td>
+            </tr>
+            <tr>
                 <td>题目</td>
                 <td><input id="title" name="title" style="width: 100%;" type="text" value="<%=report.get("title")%>"></td>
             </tr>

@@ -4,11 +4,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
-import com.sun.org.apache.regexp.internal.RE;
 import model.Report;
 import model.User;
 import util.DataUtil;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class DataController extends Controller {
@@ -22,6 +23,9 @@ public class DataController extends Controller {
         int user_id = user.get("id");
         String title = getPara("title");
         String content = getPara("content");
+        java.util.Date nowDate = new java.util.Date();
+        Timestamp sqlDate = new Timestamp(nowDate.getTime());
+
         int state = 0;
 
         Report report = new Report();
@@ -29,6 +33,7 @@ public class DataController extends Controller {
         report.set("title",title);
         report.set("content",content);
         report.set("state",state);
+        report.set("dateTime",sqlDate);
 
         report.save();
 

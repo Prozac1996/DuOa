@@ -21,6 +21,7 @@ public class DataUtil {
             jsonObject.put("content",report.get("content"));
             jsonObject.put("user_id",report.get("user_id"));
             jsonObject.put("username",user.get("username"));
+            jsonObject.put("dateTime",report.get("dateTime"));
             int state = report.get("state");
             String stateCn = "未处理";
             switch (state){

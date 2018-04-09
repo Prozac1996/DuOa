@@ -90,6 +90,10 @@
                     <td><%=stateCn%></td>
                 </tr>
                 <tr>
+                    <td>提交时间</td>
+                    <td><%=report.get("dateTime")%></td>
+                </tr>
+                <tr>
                     <td>题目</td>
                     <td><%=report.get("title")%></td>
                 </tr>

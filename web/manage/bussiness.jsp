@@ -35,6 +35,7 @@
                             { data: 'id' },
                             { data: 'title' },
                             { data: 'content' },
+                            { data: 'dateTime'},
                             { data: 'state' }
                         ],
                         "order":[0,'desc'],
@@ -144,6 +145,7 @@
                     <th>ID</th>
                     <th>提报</th>
                     <th>内容</th>
+                    <th>时间</th>
                     <th>状态</th>
                 </tr>
                 </thead>

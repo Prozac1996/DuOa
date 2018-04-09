@@ -34,6 +34,7 @@
                     { "data": 'username' },
                     { "data": 'title' },
                     { "data": 'content' },
+                    { "data": 'dateTime'},
                     { "data": 'state' }
                 ],
 //                "order":[0,'desc'],
@@ -104,6 +105,7 @@
                 <th>提报人</th>
                 <th>题目</th>
                 <th>内容</th>
+                <th>时间</th>
                 <th>状态</th>
             </tr>
             </thead>
