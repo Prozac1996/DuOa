@@ -37,7 +37,12 @@
                     { "data": 'dateTime'},
                     { "data": 'state' }
                 ],
-//                "order":[0,'desc'],
+                columnDefs : [{
+                    orderable:false,//禁用排序
+                    targets:[1,2,3]   //指定的列
+                }
+                ],
+                "order":[0,'desc'],
                 "oLanguage": {//插件的汉化
                     "sLengthMenu": "每页显示 _MENU_ 条记录",
                     "sZeroRecords": "抱歉， 没有找到",
@@ -57,8 +62,10 @@
                 "lengthChange":false,
                 "processing":true,
                 "serverSide":true,
-                "searchable":false,
-                "ajax":"../data/reportPageData"
+                "searchable":true,
+                "ajax": {
+                    "url":"../data/reportPageData"
+                },
 
             });
 

@@ -66,13 +66,19 @@ public class DataController extends Controller {
     }
 
     public void reportPageData(){
+        String[] cols = {"id","username","title","content","dateTime","state"};
+
         //获取DT传送的数据
         int draw = getParaToInt("draw");
         int start = getParaToInt("start");
         int length = getParaToInt("length");
         int pageNumber = start/length + 1;
-        String[] searchString = getParaValues("search");
-        System.out.println(searchString);
+        String orderColumn = "0";
+        orderColumn = getPara("order[0][column]");
+        orderColumn = cols[Integer.parseInt(orderColumn)];
+        String orderDir = "asc";
+        orderDir = getPara("order[0][dir]");
+        String searchValue = getPara("search[value]");
         //返回给DT数据
         List<Report> list = Report.dao.find("select * from report");
         int sum = list.size();
@@ -80,9 +86,9 @@ public class DataController extends Controller {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("draw",draw);
         jsonObject.put("recordsTotal",sum);
-        jsonObject.put("recordsFiltered",sum);
         JSONArray json;
-        Page<Report> reports = Report.dao.paginate(pageNumber,length,"select *","from report ORDER BY id desc");
+        Page<Report> reports = Report.dao.paginate(pageNumber,length,"select *","from report where title like '%"+searchValue+"%' order by "+orderColumn+" "+orderDir);
+        jsonObject.put("recordsFiltered",reports.getTotalRow());
         json = DataUtil.reportsToJsonArray(reports.getList());
         jsonObject.put("data",json);
         renderJson(jsonObject);
